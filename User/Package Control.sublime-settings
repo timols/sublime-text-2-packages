@@ -1,0 +1,31 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"Alignment",
+		"BeautifyRuby",
+		"CoffeeScript",
+		"DetectSyntax",
+		"Dotfiles Syntax Highlighting",
+		"Emmet",
+		"ERB Insert and Toggle Commands",
+		"Guard",
+		"HTML5",
+		"IndentGuides",
+		"INI",
+		"jQuery",
+		"LESS",
+		"Line Completion",
+		"Markdown Preview",
+		"Package Control",
+		"Pretty JSON",
+		"Rake",
+		"RSpec",
+		"RubyTest",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeREPL",
+		"Theme - Soda"
+	]
+}

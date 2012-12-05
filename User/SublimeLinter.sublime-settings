@@ -1,0 +1,11 @@
+{
+    "jshint_options":
+    {
+        // To fix column positions for JSHint errors you may want to add `"indent": 1` to your
+        // **User** "jshint_options". This issue affects users with tabs for indentation.
+        // This fix was reverted due to a conflict with using the `"white": true` option.
+        // "indent": 1,
+        "laxcomma": true
+    }
+
+}
