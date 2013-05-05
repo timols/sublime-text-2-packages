@@ -1,15 +1,6 @@
 # Sublime Text 2 Handlebars.js bundle
 
-- Colors of Handlebars expressions are selected to be in contrast with the surrounding HTML.
-- Handlebars expressions get syntax highlighting in HTML attributes.
-- Parameters passed to block expressions get syntax highlighting too.
-- Key bindings for `{{! Handlebars comments }}`
-- Tab triggers for
-  - `if` -> `{{#if }}`
-  - `un` -> `{{#unless }}`
-  - `each` -> `{{#each }}`
-  - `with` -> `{{#with }}`
-  - `par` -> `{{> }}` (for partials)
+At the moment this is just a simple language definition to enable code colouring.
 
 ## About Handlebars.js
 
@@ -17,36 +8,17 @@ It's a great JS templating engine, based on [Mustache](http://mustache.github.co
 
 Official website: [handlebarsjs.com](http://handlebarsjs.com/)
 
-## Installation
-
-Get it through [Sublime Package Control](http://wbond.net/sublime_packages/package_control).
-
-If you haven't used it yet, just install it from the link above and then:
-
-1. Press Shift + Command (or Control) + P
-2. Type "install", to bring up the "Package Control: Install Package" option, and press Enter
-3. Look for "Handlebars", and press Enter to install it.
-4. Choose "Handlebars" in the bottom right corner with one of your template files open
-5. Profit
-
-Package Control will also autoupdate the package from this point on!
-
-## Precompilation
-
-This package does not offer any Handlebars precompilation functionality to keep things simple, but you can use [Guard](https://github.com/guard/guard) (which is a file system watcher) and [Guard-Steering](https://github.com/guard/guard-steering) (a Handlebars precompiler from yours truly) to have all templates precompiled as you save them.
-
-There's also a [Guard package for Sublime](https://github.com/cyphactor/sublime_guard) if you want integration, but I don't personally use this as I'm happy with Guard running in an iTerm window I can access from anywhere.
-
-There are of course Node.js / Grunt based compilers too ([like this](https://npmjs.org/package/grunt-handlebars-js)), but I haven't personally used any yet.
-
 ## Credits
 
-Adapted from the great [sublime-text-handlebars](https://github.com/nrw/sublime-text-handlebars) package by Nicholas Westlake.
+Uses the fixes for Sublime by [MarkBorcherding](https://github.com/MarkBorcherding/Handlebars.tmbundle) who in turn adapted [Handlebars.tmbundle](https://github.com/drnic/Handlebars.tmbundle) by Dr Nic.
 
-## License
+## Original license
 
 (The MIT License)
 
+Copyright (c) 2010 Dr Nic Williams, drnicwilliams@gmail.com
+
+>>>>>>> 7338ef6680f975c45a6fa1db3c886cf4da28e045
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 'Software'), to deal in the Software without restriction, including
