@@ -6,6 +6,9 @@
         // This fix was reverted due to a conflict with using the `"white": true` option.
         // "indent": 1,
         "laxcomma": true
+    },
+    "sublimelinter_executable_map":
+    {
+      "ruby": "$rvm_path/bin/rvm-auto-ruby"
     }
-
 }

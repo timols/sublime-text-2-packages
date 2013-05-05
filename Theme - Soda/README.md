@@ -2,6 +2,8 @@
 
 Dark and light custom UI themes for Sublime Text 2.
 
+Project site: [http://buymeasoda.github.com/soda-theme/](http://buymeasoda.github.com/soda-theme/)
+
 ## Design
 
 ![Soda Light Theme](http://buymeasoda.github.com/soda-theme/images/screenshots/soda-2-light-theme.png?v=4)
@@ -56,6 +58,16 @@ By default, a square tab style is used. If you'd prefer to use the original curv
     "soda_classic_tabs": true
 
 ![Soda Tab Styles](http://buymeasoda.github.com/soda-theme/images/features/multiple-tab-styles.png)
+
+### Sidebar Folder Icons
+
+Soda Theme has the ability to use folder icons in the sidebar.
+
+If you'd like to use folder icons in the sidebar instead of the regular arrows, add the following custom setting to your `Settings - User` file:
+
+    "soda_folder_icons": true
+
+![Soda Folder Icons](http://buymeasoda.github.com/soda-theme/images/features/sidebar-folder-icons.png)
 
 ### Retina Resolution UI
 

@@ -2,9 +2,8 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 
 body{
   color:#444;
-  font-family:Georgia, Palatino, 'Palatino Linotype', Times,
-              'Times New Roman', serif,
-              "Hiragino Sans GB", "STXihei", "微软雅黑";
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
   font-size:12px;
   line-height:1.5em;
   background:#fefefe;
@@ -72,8 +71,8 @@ pre , code, kbd, samp {
   background-color: #F8F8F8;
   border: 1px solid #CCC; 
 }
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px;}
-pre code { border: 0px !important; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
 code { padding: 0 3px 0 3px; }
 
 b, strong { font-weight: bold; }
@@ -107,7 +106,7 @@ body{font-size:16px;}
 
 @media print {
   * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
-  body{font-size:12pt; max-width:100%;}
+  body{font-size:12pt; max-width:100%; outline:none;}
   a, a:visited { text-decoration: underline; }
   hr { height: 1px; border:0; border-bottom:1px solid black; }
   a[href]:after { content: " (" attr(href) ")"; }

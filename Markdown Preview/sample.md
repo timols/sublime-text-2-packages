@@ -10,9 +10,13 @@ this is *italic* and this is **bold** .  another _italic_ and another __bold__
 
 this is `important` text. and percentage signs : % and `%`
 
+This is a paragraph with a footnote (builtin parser only). [^note-id] 
+
+Insert `[ toc ]` without spaces to generate a table of contents (builtin parser only).
+
 ## Indentation
 > Here is some indented text
->> event more indented
+>> even more indented
 
 ## Titles
 # Big title (h1)
@@ -57,7 +61,7 @@ As links, images can also use references instead of inline links :
 
 ## Code
 
-Its quite easy to show code in markdown files.
+It's quite easy to show code in markdown files.
 
 Backticks can be used to `highlight` some words.
 
@@ -107,6 +111,10 @@ async_call('/path/to/api', function(json) {
 })
 ```
 
+The Github Markdown also brings some [nice Emoji support][emoji] : :+1: :heart: :beer:
+
+[^note-id]: This is the text of the note. 
+
 ## About
 
 This plugin and this sample file is proudly brought to you by the [revolunet team][revolunet]
@@ -119,5 +127,6 @@ This plugin and this sample file is proudly brought to you by the [revolunet tea
  [revolunet]: http://revolunet.com
  [revolunet-logo]: http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg "revolunet logo"
  [gfm]: http://github.github.com/github-flavored-markdown/
+ [emoji]: http://www.emoji-cheat-sheet.com/
 
 

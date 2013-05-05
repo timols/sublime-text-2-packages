@@ -92,20 +92,25 @@ class PythonVirtualenvRepl(sublime_plugin.WindowCommand):
             return
         (name, directory) = choices[index]
         activate_file = os.path.join(directory, "activate_this.py")
+        python_executable = os.path.join(directory, "python")
+        if os.name == "nt":
+            python_executable += ".exe"  # ;-)
 
-        init_cmd = "execfile(r'{activate_file}', dict(__file__=r'{activate_file}')); import site; import sys; sys.ps1 = '({name}) >>> '; del sys;".format(name=name, activate_file=activate_file)
         self.window.run_command("repl_open",
             {
-                "type":"telnet",
                 "encoding":"utf8",
                 "type": "subprocess",
-                "extend_env": {"PATH": directory},
-                "cmd": ["python", "-i", "-u", "-c", init_cmd],
+                "autocomplete_server": True,
+                "extend_env": {
+                    "PATH": directory,
+                    "SUBLIMEREPL_ACTIVATE_THIS": activate_file,
+                    "PYTHONIOENCODING": "utf-8"
+                },
+                "cmd": [python_executable, "-u", "${packages}/SublimeREPL/config/Python/ipy_repl.py"],
                 "cwd": "$file_path",
                 "encoding": "utf8",
                 "syntax": "Packages/Python/Python.tmLanguage",
-                "external_id": "python",
-                "extend_env": {"PYTHONIOENCODING": "utf-8"}
+                "external_id": "python"
              })
 
     def run(self):

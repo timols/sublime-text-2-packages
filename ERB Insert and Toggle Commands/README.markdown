@@ -5,9 +5,14 @@ Usage
 
 ### Installation ###
 
-  Suggest Installing [Sublime Package Control](http://wbond.net/sublime_packages/package_control)
+  I suggest Installing [Sublime Package Control](http://wbond.net/sublime_packages/package_control)
 
-  Then you can install "ERB Insert and Toggle Commands"
+ Then you can install "ERB Insert and Toggle Commands"
+
+#### Sublime Text 3 Beta Install ####
+
+Make sure to follow the [updated instructions](http://wbond.net/sublime_packages/package_control/installation#ST3) for installing package control. Even with the package being installed via package control, you still need to modify you keybinding file as per the instructions below. The manual installation listed below still works for Sublime Text 3.
+
 
 ### Manual Installation ###
 
@@ -18,7 +23,8 @@ Usage
 ```
   git clone git@github.com:eddorre/SublimeERB.git ~/.sublime_erb
 
-  ln -fs ~/.sublime_erb/erb_block.py ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+ln -fs ~/.sublime_erb/ ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/SublimeERB
+
 ```
 
   Linux Example
@@ -26,7 +32,7 @@ Usage
 ```
   git clone git@github.com:eddorre/SublimeERB.git ~/.sublime_erb
 
-  ln -fs ~/.sublime_erb/erb_block.py ~/.config/sublime-text-2/Packages/User
+  ln -fs ~/.sublime_erb/ ~/.config/sublime-text-2/Packages/SublimeERB
 ```
 
   Open your User Keybinding File and add the following keybinding to activate the toggle command in all file types
@@ -53,7 +59,7 @@ Usage
 
 ```
   cd ~/.sublime_erb
-  git pull
+  git pull --rebase
 ```
 
 Sample

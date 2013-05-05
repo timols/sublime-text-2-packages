@@ -35,7 +35,7 @@ Settings
 
 'Sublime Text 2' -> 'Preferences' -> 'Package Settings' -> 'RubyTest'
 
-Make a copy of `RubyTest.sublime-settings` file to `~/Library/Application Support/Sublime Text 2/Packages/User/` and make your changes.
+Make a copy of `RubyTest.sublime-settings` file to `~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/` and make your changes.
 
 
 Usage
@@ -46,9 +46,10 @@ Usage
  - Run last ruby test(s): `Command-Shift-E`
  - Show test panel: `Command-Shift-X` (when test panel visible hit `esc` to hide it)
  - Check RB, ERB file syntax: `Alt-Shift-V`
- - Switching between code and test:
+ - Switching between code and test (create a file if not found):
     - Single View: `Command-.`
     - Split View:  `Command-Ctrl-.`
+ - Easy file creation: `Command-Shift-C`
 Keys:
  'Command' (OSX)
  'Ctrl' (Linux / Windows)
@@ -60,7 +61,11 @@ Additional Features:
 -------------------
 Below features can be enabled by editing `RubyTest.sublime-settings`
 
-- Save on Run - if enabled then files will be automatically saved when running the test
+- RVM / RBENV auto detect (thx to @bronson) - feature is disabled by default, but if you enable it then be sure that your settings file is configure to use `bundle exec` (refer to https://github.com/maltize/sublime-text-2-ruby-tests#bundler-support)
+  `"check_for_rbenv": true`
+  `"check_for_rvm": true`
+
+- Save on Run - if enabled then all files will be automatically saved before running the test
   `"save_on_run": true`
 
 - Use Scratch  - test output in new tab
@@ -103,7 +108,12 @@ Settings:
 
       "ruby_use_scratch" : false,
       "save_on_run": false,
-      "ignored_directories": [".git", "vendor", "tmp"]
+      "ignored_directories": [".git", "vendor", "tmp"],
+
+      "hide_panel": false,
+
+      "before_callback": "",
+      "after_callback": ""
     }
 
 Bundler support:
@@ -139,3 +149,21 @@ First be sure that you have your copy of `RubyTest.sublime-settings` placed in U
       "save_on_run": false,
       "ignored_directories": [".git", "vendor", "tmp"]
     }
+
+Zeus support:
+-------------
+
+This adds support for zeus when running RSpec or Cucumber tests. First be sure that you have your copy of `RubyTest.sublime-settings` placed in User folder (refer to Settings above) and replace the following settings. ex:
+
+    {
+      "run_cucumber_command": "zeus cucumber {relative_path} --no-color",
+      "run_single_cucumber_command": "zeus cucumber {relative_path}:{line_number} --no-color",
+
+      "run_rspec_command": "zeus rspec {relative_path}",
+      "run_single_rspec_command": "zeus rspec {relative_path}:{line_number}",
+    }
+
+If you use RVM/bundler, you will need to also add:
+
+    "check_for_rvm": true
+

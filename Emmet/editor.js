@@ -172,16 +172,26 @@ function pyPreprocessText(value) {
 
 function pyExpandAbbreviationAsYouType(abbr) {
 	var info = require('editorUtils').outputInfo(editorProxy);
-	var result = emmet.expandAbbreviation(abbr, info.syntax, info.profile, 
+	try {
+		var result = emmet.expandAbbreviation(abbr, info.syntax, info.profile, 
 					require('actionUtils').captureContext(editorProxy));
-	return pyPreprocessText(result);
+		return pyPreprocessText(result);
+	} catch (e) {
+		return '';
+	}
+	
 }
 
 function pyWrapAsYouType(abbr, content) {
 	var info = require('editorUtils').outputInfo(editorProxy);
 	content = require('utils').escapeText(content);
-	var result = require('wrapWithAbbreviation').wrap(abbr, content, info.syntax, info.profile);
-	return pyPreprocessText(result);
+	var ctx = require('actionUtils').captureContext(editorProxy);
+	try {
+		var result = require('wrapWithAbbreviation').wrap(abbr, content, info.syntax, info.profile, ctx);
+		return pyPreprocessText(result);
+	} catch(e) {
+		return '';
+	}
 }
 
 function pyCaptureWrappingRange() {
@@ -208,13 +218,13 @@ function pyCaptureWrappingRange() {
 	return [startOffset, endOffset];
 }
 
-function pyGetTagNameRanges() {
+function pyGetTagNameRanges(pos) {
 	var ranges = [];
 	var info = require('editorUtils').outputInfo(editorProxy);
 		
 	// search for tag
 	try {
-		var tag = require('htmlMatcher').tag(info.content, editorProxy.getCaretPos());
+		var tag = require('htmlMatcher').tag(info.content, pos);
 		if (tag) {
 			var open = tag.open.range;
 			var tagName = /^<([\w\-\:]+)/i.exec(open.substring(info.content))[1];
@@ -274,7 +284,7 @@ function pyGetCSSCompletions(dialect) {
 			return {
 				k: v.nk,
 				label: snippet.replace(/\:\s*\$\{0\}\s*;?$/, ''),
-				v: snippet
+				v: css.expandToSnippet(v.nk, dialect)
 			};
 		});
 	}
@@ -288,7 +298,8 @@ function pyGetCSSCompletions(dialect) {
  */
 function pyGetSyntax() {
 	var view = activeView();
-	var scope = view.syntax_name(view.sel()[0].begin());
+	var pt = view.sel()[0].begin();
+	var scope = 'scope_name' in view ? view.scope_name(pt) : view.syntax_name(pt);
 
 	if (~scope.indexOf('xsl')) {
 		return 'xsl';
@@ -296,9 +307,11 @@ function pyGetSyntax() {
 
 	var syntax = 'html';
 
-	// detect CSS-like syntaxes independently, 
-	// since it may cause collisions with some highlighters
-	if (/\b(less|scss|sass|css|stylus)\b/.test(scope)) {
+	if (!/\bstring\b/.test(scope) && /\bsource\.([\w\-]+)/.test(scope) && require('resources').hasSyntax(RegExp.$1)) {
+		syntax = RegExp.$1;
+	} else if (/\b(less|scss|sass|css|stylus)\b/.test(scope)) {
+		// detect CSS-like syntaxes independently, 
+		// since it may cause collisions with some highlighters
 		syntax = RegExp.$1;
 	} else if (/\b(html|xml|haml)\b/.test(scope)) {
 		syntax = RegExp.$1;

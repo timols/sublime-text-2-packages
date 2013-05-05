@@ -1,18 +1,26 @@
-# Emmet for Sublime Text 2 plugin
+# Emmet for Sublime Text
 
-Official Emmet plugin (previously called _Zen Coding_) for Sublime Text 2.
+Official [Emmet](http://emmet.io) plugin (previously called _Zen Coding_) for Sublime Text.
 
-*Warning:* this plugin may not work at all in some OSes since it written in JavaScript and uses [PyV8](http://code.google.com/p/pyv8/) and [Google V8](https://developers.google.com/v8/) binaries to run. If you experience problems or editor crashes please [fill an issue](https://github.com/sergeche/emmet-sublime/issues).
+* [How to install](#how-to-install)
+* [Available actions](#available-actions)
+* [Extensions support](#extensions-support)
+* [Overriding keyboard shortcuts](#overriding-keyboard-shortcuts)
+* [Tab key handler](#tab-key-handler)
 
 ## How to install
 
-1. Clone or [download](/sergeche/emmet-sublime/archive/master.zip) git repo into your packages folder (in ST2, find Browse Packages... menu item to open this folder)
-2. Restart ST2 editor (if required)
+*Warning:* this plugin may not work at all in some OSes since it written in JavaScript and uses [PyV8](http://code.google.com/p/pyv8/) and [Google V8](https://developers.google.com/v8/) binaries to run. If you experience problems or editor crashes please [fill an issue](https://github.com/sergeche/emmet-sublime/issues).
 
-Or with [Package Control](http://wbond.net/sublime_packages/package_control):
+With [Package Control](http://wbond.net/sublime_packages/package_control):
 
 1. Run “Package Control: Install Package” command, find and install `Emmet` plugin.
-2. Restart ST2 editor (if required)
+2. Restart ST editor (if required)
+
+Manually:
+
+1. Clone or [download](https://github.com/sergeche/emmet-sublime/archive/master.zip) git repo into your packages folder (in ST, find Browse Packages... menu item to open this folder)
+2. Restart ST editor (if required)
 
 --------------
 
@@ -38,7 +46,7 @@ Or with [Package Control](http://wbond.net/sublime_packages/package_control):
 * [Wrap With Abbreviation](http://docs.emmet.io/actions/wrap-with-abbreviation/) — <kbd>⌃W</kbd> / <kbd>Shift+Ctrl+G</kbd>
 * [Go to Edit Point](http://docs.emmet.io/actions/go-to-edit-point/) — <kbd>Ctrl+Alt+→</kbd> or <kbd>Ctrl+Alt+←</kbd>
 * [Select Item](http://docs.emmet.io/actions/select-item/) – <kbd>⇧⌘.</kbd> or <kbd>⇧⌘,</kbd> / <kbd>Shift+Ctrl+.</kbd> or <kbd>Shift+Ctrl+,</kbd>
-* [Toggle Comment](http://docs.emmet.io/actions/toggle-comment/) — <kbd>⇧⌘/</kbd> / <kbd>Shift+Ctrl+/</kbd>
+* [Toggle Comment](http://docs.emmet.io/actions/toggle-comment/) — <kbd>⇧⌥/</kbd> / <kbd>Shift+Ctrl+/</kbd>
 * [Split/Join Tag](http://docs.emmet.io/actions/split-join-tag/) — <kbd>⇧⌘'</kbd> / <kbd>Shift+Ctrl+`</kbd>
 * [Remove Tag](http://docs.emmet.io/actions/remove-tag/) – <kbd>⌘'</kbd> / <kbd>Shift+Ctrl+;</kbd>
 * [Update Image Size](http://docs.emmet.io/actions/update-image-size/) — <kbd>⇧⌃I</kbd> / <kbd>Ctrl+U</kbd>
@@ -66,7 +74,7 @@ Also, you can create sections named as extension files (e.g. `snippets`, `prefer
 
 ## Overriding keyboard shortcuts ##
 
-Sublime Text 2 is a great text editor with lots of features and actions. Most of these actions are bound to keyboard shortcuts so it’s nearly impossible to provide convenient plugin shortcuts for third-party plugins.
+Sublime Text is a great text editor with lots of features and actions. Most of these actions are bound to keyboard shortcuts so it’s nearly impossible to provide convenient plugin shortcuts for third-party plugins.
 
 If you’re unhappy with default keymap, you can disable individual keyboard shortcuts with `disabled_keymap_actions` preference of `Emmet.sublime-settings` file.
 
@@ -100,7 +108,7 @@ To fine-tune Tab key handler, you can use the following settings in user’s `Em
 "disable_tab_abbreviations_for_scopes": "text.haml, string"
 ```
 
-* `disabled_single_snippet_for_scopes` — a comma-separated list of syntax scopes where Tab handler should be disabled when expanding a single abbreviation. Currently, ST2 doesn’t provide API for getting list of native snippets. So, for example, if you try to expand a `php` abbreviation, it will be passed to Emmet which outputs `<php></php>` instead of PHP block as defined in native ST2 snippets. As a workaround, if you’re trying to expand a single abbreviation inside scope defined in `disabled_single_snippet_for_scopes` setting Emmet will look for its name inside its own [snippets catalog](http://docs.emmet.io/cheat-sheet/) first, inside `known_html_tags` setting second and if it’s not found, it allows ST2 to handle it and expand native abbreviation, if matched.
+* `disabled_single_snippet_for_scopes` — a comma-separated list of syntax scopes where Tab handler should be disabled when expanding a single abbreviation. Currently, ST doesn’t provide API for getting list of native snippets. So, for example, if you try to expand a `php` abbreviation, it will be passed to Emmet which outputs `<php></php>` instead of PHP block as defined in native ST snippets. As a workaround, if you’re trying to expand a single abbreviation inside scope defined in `disabled_single_snippet_for_scopes` setting Emmet will look for its name inside its own [snippets catalog](http://docs.emmet.io/cheat-sheet/) first, inside `known_html_tags` setting second and if it’s not found, it allows ST to handle it and expand native abbreviation, if matched.
 * `known_html_tags` — a space-separated list of all known HTML tags used for lookup as described above.
 
 If you’re unhappy with Emmet tab handler behavior, you can disable it: just add `"disable_tab_abbreviations": true` into user’s `Preferences.sublime-settings` file.

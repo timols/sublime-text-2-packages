@@ -42,8 +42,8 @@ def sender(external_id,):
 
 @sender("python")
 def python_sender(repl, text, file_name=None):
-    code = text.encode("hex")
-    execute = 'exec compile(\'%s\'.decode("hex"), "<string>", "exec")\n' % (code,)
+    code = text.encode('utf-8').encode("hex")
+    execute = 'from binascii import unhexlify as __un; exec(compile(__un(b\'%s\').decode("utf-8"), "<string>", "exec"))\n' % (code,)
     return default_sender(repl, execute, file_name)
 
 
